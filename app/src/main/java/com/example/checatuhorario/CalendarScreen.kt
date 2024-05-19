@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.Cyan80
 import com.example.checatuhorario.ui.theme.blue80
 import com.example.checatuhorario.ui.theme.blueL100
@@ -71,11 +72,20 @@ fun CalendarScreen(navController: NavHostController){
                 titleContentColor = blue80,
             ),
                 title = {
-                    Column {
-                        Text("Calendario",
+                    Row(modifier = Modifier.fillMaxWidth().fillMaxWidth()) {
+                        Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Regresar",
+                            Modifier.clickable {
+                                navController.popBackStack() // Se limpia el stack de navegacion
+                                navController.navigate(AppScreens.HomeScreen.route)
+
+                            } )
+                        Text(
+                            text = "Calendario",
                             style = TextStyle(
-                                fontSize = 15.sp
-                            )
+                                fontSize = 20.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
 
@@ -255,7 +265,7 @@ fun ListCards(){
     val lab4 = "Laboratorio 4"
     val labIn4 = "Laboratorio Industria 4.0"
     val salon= "Salon 40"
-        LazyColumn (modifier = Modifier
+        LazyColumn(modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp)
             .fillMaxSize()) {
