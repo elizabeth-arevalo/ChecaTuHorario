@@ -39,6 +39,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.blueL40
 
+// Agregar la validación de Datos
+
 
 @Composable
 fun LoginScreen(navController: NavHostController){
