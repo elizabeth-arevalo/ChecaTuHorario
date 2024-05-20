@@ -2,14 +2,24 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="LoginScreenPreview">
+        <State />
+      </entry>
       <entry key="MainActivity">
-        <State />
-      </entry>
-      <entry key="MainScreenPreview">
-        <State />
-      </entry>
-      <entry key="WelcomeScreenPreview">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Pixel_8_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-20T22:38:50.446410385Z" />
+        </State>
       </entry>
       <entry key="app">
         <State />
