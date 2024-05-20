@@ -2,7 +2,7 @@
 
 EL DESARROLLO DE APLICACIONES MÓVILES PARA TELÉFONOS CELULARES HA
 REDEFINIDO NUESTRA VIDA COTIDIANA DE MANERAS QUE ANTES PARECÍAN
-FUTURISTAS.DESDELA APARICIÓNDELASPRIMERAS APLICACIONES SENCILLAS
+FUTURISTAS.DESDELA APARICIÓN DE LAS PRIMERAS APLICACIONES SENCILLAS
 HASTA EL AUGE DE LAS SOFISTICADAS Y VERSÁTILES APPS QUE UTILIZAMOS A
 DIARIO, ESTAS HERRAMIENTAS SE HAN CONVERTIDO EN PILARES
 FUNDAMENTALES DE NUESTRO DÍA A DÍA. EN ESTA BREVE INTRODUCCIÓN,
@@ -17,3 +17,6 @@ Presentamos este proyecto con el objetivo de abordar una problemática recurrent
 
 Además, los horarios suelen estar dispersos por todo el edificio o en su caso, en el edificio 2b (Blanco), lo que dificulta encontrarlos, y cuando finalmente se encuentra uno, es complicado determinar si corresponde a la carrera del estudiante o a otra, lo que puede llevar a la confusión. También hemos identificado que, incluso si se encuentran los horarios correctos, a menudo no están completos ni incluyen información sobre todas las carreras
 
+# Objetivo general
+
+Desarrollar una aplicación móvil para mostrar información precisa y util al estudiantado de nuevo ingreso como los existentes en al Facultad de Contaduría, Administración e Informática (FCAeI- UAEM), que permita consultar datos de interés para los estudiantes, como: horarios de clases. Además, se busca reducir la dependencia de impresión de horarios en papel, lo que contribuirá a la protección del medio ambiente.
