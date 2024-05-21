@@ -1,6 +1,7 @@
 package com.example.checatuhorario
 
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -257,6 +258,7 @@ fun CalendarScreenPreview(){
 }
 
 // @Events
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun ListCards(){
     val lab1 = "Laboratorio 1"
