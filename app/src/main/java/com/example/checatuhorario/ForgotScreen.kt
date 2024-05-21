@@ -83,7 +83,6 @@ fun ForgotScreen(navController: NavHostController){
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Forgot2Screen(navController: NavHostController){
@@ -196,3 +195,16 @@ fun ForgotScreenPreview(){
     ForgotScreen(navController)
 }
 
+@Preview(showBackground = true)
+@Composable
+fun Forgot2ScreenPreview(){
+    val navController = rememberNavController()
+    Forgot2Screen(navController)
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Forgot3ScreenPreview(){
+    val navController = rememberNavController()
+    Forgot3Screen(navController)
+}
