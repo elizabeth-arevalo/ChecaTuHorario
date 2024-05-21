@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -93,7 +94,7 @@ fun LoginScreen(navController: NavHostController){
     val coroutineScope = rememberCoroutineScope()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var wrongPasswordAttempts by remember { mutableStateOf(0) }
+    var wrongPasswordAttempts by remember { mutableIntStateOf(0) }
     val offset = Offset(2.5f, 6.0f)
 
     Column(

@@ -19,8 +19,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -41,7 +41,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -65,7 +64,6 @@ import java.time.format.FormatStyle
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CalendarScreen(navController: NavHostController){
-    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(colors = topAppBarColors(
@@ -74,7 +72,7 @@ fun CalendarScreen(navController: NavHostController){
             ),
                 title = {
                     Row(modifier = Modifier.fillMaxWidth().fillMaxWidth()) {
-                        Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Regresar",
+                        Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Regresar",
                             Modifier.clickable {
                                 navController.popBackStack() // Se limpia el stack de navegacion
                                 navController.navigate(AppScreens.HomeScreen.route)
@@ -175,13 +173,13 @@ fun Header(
             onPrevClickListener(data.startDate.date)
             },
                 modifier = Modifier.fillMaxWidth()) {
-                Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Arrow-Back")
+                Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Arrow-Back")
             }
             IconButton(onClick = {
                 // invoke next callback when this button is clicked
                 onNextClickListener(data.endDate.date)
             }) {
-                Icon(imageVector = Icons.Default.KeyboardArrowRight,
+                Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = "Arrow")
             }
     }
@@ -208,7 +206,7 @@ fun Content(
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun ContentItem(
     date: CalendarUiModel.Date,
@@ -271,7 +269,7 @@ fun ListCards(){
             .fillMaxWidth()
             .padding(15.dp)
             .fillMaxSize()) {
-        item () {
+        item  {
             Row {
                 Text(text = "Hora",
                     style = TextStyle(
