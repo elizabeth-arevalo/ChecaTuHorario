@@ -10,4 +10,5 @@ sealed class AppScreens (val route: String){
     data object Forgot3Screen: AppScreens("forgot3_screen")
     data object RegisterScreen: AppScreens("register_screen")
     data object CalendarScreen: AppScreens("calendar_screen")
+    data object ContactsScreen: AppScreens("contacts_screen")
 }

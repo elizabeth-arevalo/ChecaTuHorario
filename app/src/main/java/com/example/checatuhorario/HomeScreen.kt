@@ -48,7 +48,6 @@ fun HomeScreen(navController: NavHostController){
                 containerColor = MaterialTheme.colorScheme.primary,
                 titleContentColor = blue80,
             ),
-                modifier = Modifier.padding(vertical = 1.dp),
                 title = {
                     Row {
                         Text(
@@ -130,7 +129,7 @@ fun HomeScreen(navController: NavHostController){
                     }
                 }
                 Button(
-                    onClick = { navController.navigate(AppScreens.RegisterScreen.route) },
+                    onClick = { navController.navigate(AppScreens.ContactsScreen.route) },
                     modifier = Modifier
                         .padding(15.dp)
                         .size(width = 1000.dp, height = 80.dp)

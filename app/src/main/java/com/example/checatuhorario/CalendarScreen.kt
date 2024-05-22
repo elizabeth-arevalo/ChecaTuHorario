@@ -54,7 +54,6 @@ import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.Cyan80
 import com.example.checatuhorario.ui.theme.blue80
 import com.example.checatuhorario.ui.theme.blueL100
-import com.example.checatuhorario.ui.theme.blueL40
 import com.example.checatuhorario.ui.theme.white80
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -67,7 +66,7 @@ fun CalendarScreen(navController: NavHostController){
     Scaffold(
         topBar = {
             TopAppBar(colors = topAppBarColors(
-                containerColor = blueL40,
+                containerColor = MaterialTheme.colorScheme.primary,
                 titleContentColor = blue80,
             ),
                 title = {

@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.CalendarScreen
+import com.example.checatuhorario.ContactListScreen
 import com.example.checatuhorario.Forgot2Screen
 import com.example.checatuhorario.Forgot3Screen
 import com.example.checatuhorario.ForgotScreen
@@ -45,6 +46,9 @@ fun AppNavigation(){
         }
         composable(AppScreens.CalendarScreen.route){
             CalendarScreen(navController)
+        }
+        composable(AppScreens.ContactsScreen.route){
+            ContactListScreen(navController)
         }
     }
 }
