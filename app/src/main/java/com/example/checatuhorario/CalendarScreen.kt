@@ -2,7 +2,6 @@ package com.example.checatuhorario
 
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,11 +16,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,11 +36,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,10 +45,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.navigation.AppScreens
-import com.example.checatuhorario.ui.theme.Cyan80
 import com.example.checatuhorario.ui.theme.blue80
-import com.example.checatuhorario.ui.theme.blueL100
-import com.example.checatuhorario.ui.theme.white80
+import com.example.checatuhorario.utils.MateriasList
+import com.example.checatuhorario.utils.dataClasses.Materia
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -70,7 +63,9 @@ fun CalendarScreen(navController: NavHostController){
                 titleContentColor = blue80,
             ),
                 title = {
-                    Row(modifier = Modifier.fillMaxWidth().fillMaxWidth()) {
+                    Row(modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxWidth()) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Regresar",
                             Modifier.clickable {
                                 navController.popBackStack() // Se limpia el stack de navegacion
@@ -152,7 +147,7 @@ fun Header(
     onPrevClickListener: (LocalDate) -> Unit,
     onNextClickListener: (LocalDate) -> Unit,
 ) {
-    LazyRow {
+    LazyRow(Modifier.padding(10.dp)) {
         item {
             Text(
                 // show "Today" if user selects today's date
@@ -164,20 +159,20 @@ fun Header(
                         DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
                     )
                 },
-                modifier = Modifier.padding(horizontal = 40.dp, vertical = 20.dp
-                )
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 30.dp)
             )
             IconButton(onClick = {
             // invoke previous callback when its button clicked
             onPrevClickListener(data.startDate.date)
             },
-                modifier = Modifier.fillMaxWidth()) {
+                modifier = Modifier.padding(8.dp)) {
                 Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Arrow-Back")
             }
             IconButton(onClick = {
                 // invoke next callback when this button is clicked
                 onNextClickListener(data.endDate.date)
-            }) {
+            },
+                modifier = Modifier.padding(8.dp)) {
                 Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = "Arrow")
             }
@@ -259,11 +254,23 @@ fun CalendarScreenPreview(){
 @Composable
 fun ListCards(){
     val lab1 = "Laboratorio 1"
+    val edificio = "Edificio 2"
     val lab2 = "Laboratorio 2"
     val lab3 = "Laboratorio 3"
     val lab4 = "Laboratorio 4"
     val labIn4 = "Laboratorio Industria 4.0"
     val salon= "Salon 40"
+
+
+
+    val materias = listOf(
+        Materia("Optativa - Ciencia de Datos", "14:25","15:15", salon, edificio,"Dra. Yessica Yazmin Calderón Segura"),
+        Materia("Arquitectura y desarrollo del cómputo móvil", "15:25","16:15", lab1, edificio,"Ing. Roberto Pablo López Romero"),
+        Materia("Realidad Aumentada", "16:35","17:25", labIn4, edificio,"Mtra. Beatriz Serrano Rodríguez"),
+        Materia("Sistemas Inteligentes", "17:30","18:15", lab3, edificio,"Ing. Ariana María García Reyes"),
+        Materia("Internet de las Cosas", "18:20","19:15", labIn4, edificio,"Dr. David Torres Moreno"),
+        Materia("Seminario de Investigación", "19:20","20:15", salon, edificio,"Dra- Laura Cruz Abarca")
+    )
         LazyColumn(modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp)
@@ -284,435 +291,9 @@ fun ListCards(){
                     modifier = Modifier.size(width = 270.dp, height = 20.dp))
             }
             Spacer(modifier = Modifier.height(10.dp))
-
-            // Materia 1
-            Row {
-                Column(modifier= Modifier
-                    .size(width = 90.dp, height = 80.dp)
-                    .padding(vertical = 8.dp)) {
-                    Text(text = "14:25",
-                        style = TextStyle(
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(text = "15:15",
-                        modifier = Modifier
-                            .padding(vertical = 4.dp)
-                            .fillMaxWidth(),
-                        style = TextStyle(
-                            Color.Gray,
-                            textAlign = TextAlign.Center
-                        )
-                    )
-                }
-
-
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = white80,
-                    ),
-                    modifier = Modifier
-                        .size(width = 260.dp, height = 130.dp)
-                ) {
-                    Column(modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()) {
-                        Text(
-                            text = "Optativa - Ciencia de Datos",
-                            textAlign = TextAlign.Center,
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(fontSize = 15.sp)
-                        )
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        Row {
-                            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "loc-icon")
-                            Text(text = "$salon\nEdificio 2",
-                                style = TextStyle(fontSize = 11.sp))
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-
-                        Row {
-                            Image(
-                                painter = painterResource(R.drawable.fcaei),
-                                contentDescription = "Contact profile picture",
-                                modifier = Modifier
-                                    // Set image size to 40 dp
-                                    .size(25.dp)
-                                    // Clip image to be shaped as a circle
-                                    .clip(CircleShape)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(text = "Dra. Yessica Yazmin Calderón Segura",
-                                style = TextStyle(fontSize = 13.sp))
-                        }
-
-                    }
-
-                }
-            } // Fin materia 1
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Materia 2
-            Row {
-                Column(modifier= Modifier
-                    .size(width = 90.dp, height = 80.dp)
-                    .padding(vertical = 8.dp)) {
-                    Text(text = "15:25",
-                        style = TextStyle(
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(text = "16:15",
-                        modifier = Modifier
-                            .padding(vertical = 4.dp)
-                            .fillMaxWidth(),
-                        style = TextStyle(
-                            Color.Gray,
-                            textAlign = TextAlign.Center
-                        )
-                    )
-                }
-
-
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = Cyan80,
-                    ),
-                    modifier = Modifier
-                        .size(width = 260.dp, height = 140.dp)
-                ) {
-                    Column(modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()) {
-
-                        Text(
-                            text = "Arquitectura y desarrollo del cómputo móvil",
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(
-                                fontSize = 15.sp))
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        Row {
-                            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "loc-icon")
-                            Text(text = "$lab1\nEdificio 2",
-                                style = TextStyle(fontSize = 11.sp))
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Row {
-                            Image(
-                                painter = painterResource(R.drawable.fcaei),
-                                contentDescription = "Contact profile picture",
-                                modifier = Modifier
-                                    // Set image size to 40 dp
-                                    .size(25.dp)
-                                    // Clip image to be shaped as a circle
-                                    .clip(CircleShape)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-
-                            Text(text = "Ing. Roberto Pablo López Romero",
-                                style = TextStyle(fontSize = 13.sp))
-                        }
-
-                    }
-
-                }
-            } // Fin Materia 2
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Materia 3
-            Row {
-                Column(modifier= Modifier
-                    .size(width = 90.dp, height = 80.dp)
-                    .padding(vertical = 8.dp)) {
-                    Text(text = "16:35",
-                        style = TextStyle(
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(text = "17:25",
-                        modifier = Modifier
-                            .padding(vertical = 4.dp)
-                            .fillMaxWidth(),
-                        style = TextStyle(
-                            Color.Gray,
-                            textAlign = TextAlign.Center
-                        )
-                    )
-                }
-
-
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = blue80,
-                    ),
-                    modifier = Modifier
-                        .size(width = 260.dp, height = 120.dp)
-                ) {
-                    Column(modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()) {
-
-                        Text(
-                            text = "Realidad Aumentada",
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(
-                                fontSize = 15.sp))
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        Row {
-                            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "loc-icon")
-                            Text(text = "$labIn4\nEdificio 2",
-                                style = TextStyle(fontSize = 11.sp))
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Row {
-                            Image(
-                                painter = painterResource(R.drawable.fcaei),
-                                contentDescription = "Contact profile picture",
-                                modifier = Modifier
-                                    // Set image size to 40 dp
-                                    .size(25.dp)
-                                    // Clip image to be shaped as a circle
-                                    .clip(CircleShape)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-
-                            Text(text = "Mtra. Beatriz Serrano Rodríguez",
-                                style = TextStyle(fontSize = 13.sp))
-                        }
-
-                    }
-
-                }
-            } // Fin Materia 3
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Materia 4
-            Row {
-                Column(modifier= Modifier
-                    .size(width = 90.dp, height = 80.dp)
-                    .padding(vertical = 8.dp)) {
-                    Text(text = "17:30",
-                        style = TextStyle(
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(text = "18:15",
-                        modifier = Modifier
-                            .padding(vertical = 4.dp)
-                            .fillMaxWidth(),
-                        style = TextStyle(
-                            Color.Gray,
-                            textAlign = TextAlign.Center
-                        )
-                    )
-                }
-
-
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = blueL100,
-                    ),
-                    modifier = Modifier
-                        .size(width = 260.dp, height = 120.dp)
-                ) {
-                    Column(modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()) {
-
-                        Text(
-                            text = "Sistemas Inteligentes",
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(
-                                fontSize = 15.sp))
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        Row {
-                            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "loc-icon")
-                            Text(text = "$lab3\nEdificio 2",
-                                style = TextStyle(fontSize = 11.sp))
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Row {
-                            Image(
-                                painter = painterResource(R.drawable.fcaei),
-                                contentDescription = "Contact profile picture",
-                                modifier = Modifier
-                                    // Set image size to 40 dp
-                                    .size(25.dp)
-                                    // Clip image to be shaped as a circle
-                                    .clip(CircleShape)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-
-                            Text(text = "Ing. Ariana María García Reyes",
-                                style = TextStyle(fontSize = 13.sp))
-                        }
-
-                    }
-
-                }
-            } // Fin Materia 4
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Materia 5
-            Row {
-                Column(modifier= Modifier
-                    .size(width = 90.dp, height = 80.dp)
-                    .padding(vertical = 8.dp)) {
-                    Text(text = "18:20",
-                        style = TextStyle(
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(text = "19:15",
-                        modifier = Modifier
-                            .padding(vertical = 4.dp)
-                            .fillMaxWidth(),
-                        style = TextStyle(
-                            Color.Gray,
-                            textAlign = TextAlign.Center
-                        )
-                    )
-                }
-
-
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = white80,
-                    ),
-                    modifier = Modifier
-                        .size(width = 260.dp, height = 120.dp)
-                ) {
-                    Column(modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()) {
-
-                        Text(
-                            text = "Internet de las Cosas",
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(
-                                fontSize = 15.sp))
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        Row {
-                            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "loc-icon")
-                            Text(text = "$labIn4\nEdificio 2",
-                                style = TextStyle(fontSize = 11.sp))
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Row {
-                            Image(
-                                painter = painterResource(R.drawable.fcaei),
-                                contentDescription = "Contact profile picture",
-                                modifier = Modifier
-                                    // Set image size to 40 dp
-                                    .size(25.dp)
-                                    // Clip image to be shaped as a circle
-                                    .clip(CircleShape)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-
-                            Text(text = "Dr. David Torres Moreno",
-                                style = TextStyle(fontSize = 13.sp))
-                        }
-
-                    }
-
-                }
-            } // Fin Materia 5
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Materia 6
-            Row {
-                Column(modifier= Modifier
-                    .size(width = 90.dp, height = 80.dp)
-                    .padding(vertical = 8.dp)) {
-                    Text(text = "19:20",
-                        style = TextStyle(
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(text = "20:15",
-                        modifier = Modifier
-                            .padding(vertical = 4.dp)
-                            .fillMaxWidth(),
-                        style = TextStyle(
-                            Color.Gray,
-                            textAlign = TextAlign.Center
-                        )
-                    )
-                }
-
-
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = white80,
-                    ),
-                    modifier = Modifier
-                        .size(width = 260.dp, height = 120.dp)
-                ) {
-                    Column(modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()) {
-
-                        Text(
-                            text = "Seminario de Investigación",
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(
-                                fontSize = 15.sp))
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        Row {
-                            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "loc-icon")
-                            Text(text = "$salon\nEdificio 2",
-                                style = TextStyle(fontSize = 11.sp))
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Row {
-                            Image(
-                                painter = painterResource(R.drawable.fcaei),
-                                contentDescription = "Contact profile picture",
-                                modifier = Modifier
-                                    // Set image size to 40 dp
-                                    .size(25.dp)
-                                    // Clip image to be shaped as a circle
-                                    .clip(CircleShape)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-
-                            Text(text = "Dra. Laura",
-                                style = TextStyle(fontSize = 13.sp))
-                        }
-
-                    }
-
-                }
-            } // Fin Materia 6
+            materias.forEach(){materia ->
+                MateriasList(materia)
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.checatuhorario
 
-import android.content.Intent
-import android.net.Uri
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,17 +9,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -35,11 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,14 +37,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.blue80
+import com.example.checatuhorario.utils.ProfesorCardItem
+import com.example.checatuhorario.utils.dataClasses.Profesor
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactListScreen(navController: NavHostController) {
     val profesores = listOf(
-        Profesor("Juan Pérez", "123456789", "juan.perez@example.com", "123456789"),
-        Profesor("María López", "987654321", "maria.lopez@example.com", "987654321")
+        Profesor("Yessica Yazmin","Calderón Segura", "123456789", "juan.perez@example.com", "123456789"),
+        Profesor("Roberto Pablo","López Romero", "987654321", "maria.lopez@example.com", "987654321"),
+        Profesor("Beatriz","Serrano Rodríguez", "123456789", "juan.perez@example.com", "123456789"),
+        Profesor("Ariana María","García Reyes", "987654321", "maria.lopez@example.com", "987654321"),
+        Profesor("David","Torres Moreno", "123456789", "juan.perez@example.com", "123456789"),
+        Profesor("Laura","Cruz Abarca", "987654321", "maria.lopez@example.com", "987654321"),
     )
 
     var searchText by remember { mutableStateOf(TextFieldValue("")) }
@@ -69,7 +64,9 @@ fun ContactListScreen(navController: NavHostController) {
                 titleContentColor = blue80,
             ),
                 title = {
-                    Row(modifier = Modifier.fillMaxWidth().fillMaxWidth()) {
+                    Row(modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxWidth()) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Regresar",
                             Modifier.clickable {
                                 navController.popBackStack() // Se limpia el stack de navegacion
@@ -77,7 +74,7 @@ fun ContactListScreen(navController: NavHostController) {
 
                             } )
                         Text(
-                            text = "Lista de Contactos",
+                            text = "Lista de contactos",
                             style = TextStyle(
                                 fontSize = 20.sp,
                                 textAlign = TextAlign.Center
@@ -89,13 +86,15 @@ fun ContactListScreen(navController: NavHostController) {
                 })
         },
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        Column(Modifier.padding(innerPadding)) {
             // Barra de búsqueda
             OutlinedTextField(
                 value = searchText,
                 onValueChange = { searchText = it },
                 label = { Text("Buscar por nombre") },
-                modifier = Modifier.fillMaxWidth().padding(5.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -130,78 +129,14 @@ fun ContactListScreen(navController: NavHostController) {
 
             // Lista de profesores filtrados
             filteredProfesores.forEach { profesor ->
-                ProfesorItem(profesor = profesor)
+                ProfesorCardItem(profesor = profesor)
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
-    }
-}
-@Composable
-fun ProfesorItem(profesor: Profesor) {
-    var expanded by remember { mutableStateOf(false) }
-    val context = LocalContext.current
 
-    Card(
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { expanded = !expanded }
-    ) {
-        LazyColumn(modifier = Modifier.padding(20.dp)) {
-            item {
-                Text(text = profesor.nombre,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(8.dp))
-                if (expanded) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(Modifier.padding(horizontal = 20.dp)) {
-                        Button(
-                            onClick = {
-                            context.startActivity(
-                                Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://wa.me/${profesor.whatsapp}")
-                                )
-                            ) },
-                            modifier = Modifier.padding(10.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.chat),
-                                contentDescription = "WhatsApp"
-                            )
-                        }
-                        Button(onClick = {
-                            context.startActivity(
-                                Intent(
-                                    Intent.ACTION_DIAL,
-                                    Uri.parse("tel:${profesor.telefono}")
-                                )
-                            )
-                        },
-                            modifier = Modifier.padding(10.dp).clip(CircleShape)
-                        ) {
-                            Icon(imageVector = Icons.Filled.Call, contentDescription = "Llamada")
-                        }
-                        Button(onClick = {
-                            context.startActivity(
-                                Intent(
-                                    Intent.ACTION_SENDTO,
-                                    Uri.parse("mailto:${profesor.email}")
-                                )
-                            )
-                        },
-                            modifier = Modifier.padding(10.dp)
-                        ) {
-                            Icon(imageVector = Icons.Filled.Email, contentDescription = "correo")
-                        }
-                    }
-                }
-            }
-        }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

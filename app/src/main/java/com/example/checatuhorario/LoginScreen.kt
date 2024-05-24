@@ -120,7 +120,7 @@ fun LoginScreen(navController: NavHostController){
             OutlinedTextField(
                 value = email,
                 onValueChange = {email = it},
-                label = { Text("Correo")})
+                label = { Text("Correo")},)
         }
         Row(Modifier.padding(6.dp)) {
             Icon(imageVector = Icons.Default.Lock,
@@ -152,6 +152,8 @@ fun LoginScreen(navController: NavHostController){
                 style = TextStyle(fontSize = 25.sp)
             )
         }
+        Text(text = "¿Olvidaste tu contraseña?",
+            modifier = Modifier.clickable { navController.navigate(AppScreens.ForgotScreen.route) })
         Row {
             Text(text = "¿No tienes cuenta? ")
             Text(text = " Registrate",

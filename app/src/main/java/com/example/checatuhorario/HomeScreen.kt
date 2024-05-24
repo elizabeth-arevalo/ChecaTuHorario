@@ -4,13 +4,11 @@ package com.example.checatuhorario
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -33,15 +31,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.blue80
+import com.google.firebase.auth.FirebaseAuth
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController){
-    val context = LocalContext.current
-    val intentKardex = Intent(Intent.ACTION_VIEW, Uri.parse("https://kardex.uaem.mx/"))
-    val intentPay = Intent(Intent.ACTION_VIEW, Uri.parse("https://pagos.uaem.mx/"))
-    val intentCredits = Intent(Intent.ACTION_VIEW, Uri.parse("http://seadfcaei.uaem.mx/SAE/"))
+    val currentUser = FirebaseAuth.getInstance().currentUser
+
     Scaffold(
         topBar = {
             TopAppBar(colors = topAppBarColors(
@@ -60,170 +57,24 @@ fun HomeScreen(navController: NavHostController){
                                 fontSize = 15.sp,
                                 textAlign = TextAlign.Start
                             ),
-                            modifier = Modifier.padding(15.dp),
+                            modifier = Modifier.padding(10.dp),
                         )
                         Image(painter = painterResource(id = R.drawable.fcaei),
                             contentDescription = "logo-uni",
-                            modifier = Modifier.size(75.dp,75.dp),
+                            modifier = Modifier.size(65.dp),
                             Alignment.TopEnd
                         )
                     }
-                    
+
                 })
         },
     ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
+        // En tu composable, usa un bucle para crear los botones dinámicamente
+        Column(
+            Modifier
                 .padding(innerPadding)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            item {
-                Spacer(modifier = Modifier.padding(10.dp))
-                Button(
-                    onClick = { navController.navigate(AppScreens.CalendarScreen.route) },
-                    modifier = Modifier
-                        .padding(15.dp)
-                        .size(width = 1000.dp, height = 80.dp)
-                ) {
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.calendar_month),
-                            contentDescription = "Calendar-logo",
-                            modifier = Modifier
-                                .padding(15.dp)
-                                .size(50.dp, 50.dp)
-                        )
-                        Text(
-                            text = "Ver mi Horario de Clase",
-                            style = TextStyle(
-                                fontSize = 19.2.sp,
-                                textAlign = TextAlign.Start
-                            ),
-                            modifier = Modifier.padding(17.dp)
-                        )
-                    }
-                }
-                Button(
-                    onClick = { navController.navigate(AppScreens.RegisterScreen.route) },
-                    modifier = Modifier
-                        .padding(15.dp)
-                        .size(width = 1000.dp, height = 80.dp)
-                ) {
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.edit_calendar),
-                            contentDescription = "Calendar-logo",
-                            modifier = Modifier
-                                .padding(15.dp)
-                                .size(50.dp, 50.dp)
-                        )
-                        Text(
-                            text = "Agendar una Conferencia",
-                            style = TextStyle(
-                                fontSize = 17.81.sp
-                            ),
-                            modifier = Modifier.padding(17.dp)
-                        )
-                    }
-                }
-                Button(
-                    onClick = { navController.navigate(AppScreens.ContactsScreen.route) },
-                    modifier = Modifier
-                        .padding(15.dp)
-                        .size(width = 1000.dp, height = 80.dp)
-                ) {
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.contacts),
-                            contentDescription = "contacts-logo",
-                            modifier = Modifier
-                                .padding(15.dp)
-                                .size(50.dp, 50.dp)
-                        )
-                        Text(
-                            text = "Contacto de Profesores",
-                            style = TextStyle(
-                                fontSize = 19.2.sp
-                            ),
-                            modifier = Modifier.padding(17.dp)
-                        )
-                    }
-                }
-                Button(
-                    onClick = { context.startActivity(intentKardex) },
-                    modifier = Modifier
-                        .padding(15.dp)
-                        .size(width = 1000.dp, height = 80.dp)
-                ) {
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.link),
-                            contentDescription = "link-logo",
-                            modifier = Modifier
-                                .padding(15.dp)
-                                .size(50.dp, 50.dp)
-                        )
-                        Text(
-                            text = "Portal  Kardex UAEM",
-                            style = TextStyle(
-                                fontSize = 19.2.sp
-                            ),
-                            modifier = Modifier.padding(17.dp)
-                        )
-                    }
-                }
-                Button(
-                    onClick = { context.startActivity(intentPay) },
-                    modifier = Modifier
-                        .padding(20.dp)
-                        .size(width = 1000.dp, height = 80.dp)
-                ) {
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.link),
-                            contentDescription = "link-logo",
-                            modifier = Modifier
-                                .padding(15.dp)
-                                .size(50.dp, 50.dp)
-                        )
-                        Text(
-                            text = "Portal Pagos UAEM",
-                            style = TextStyle(
-                                fontSize = 19.2.sp
-                            ),
-                            modifier = Modifier.padding(17.dp)
-                        )
-                    }
-                }
-                Button(
-                    onClick = { context.startActivity(intentCredits) },
-                    modifier = Modifier
-                        .padding(20.dp)
-                        .size(width = 1000.dp, height = 80.dp)
-                ) {
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.link),
-                            contentDescription = "link-logo",
-                            modifier = Modifier
-                                .padding(15.dp)
-                                .size(50.dp, 50.dp)
-                        )
-                        Text(
-                            text = "Portal  de  Créditos",
-                            style = TextStyle(
-                                fontSize = 19.2.sp
-                            ),
-                            modifier = Modifier.padding(17.dp)
-                        )
-                    }
-                }
-
-            }
-
-
+                .fillMaxWidth()) {
+            ButtonOptions(navController)
         }
     }
 }
@@ -235,3 +86,75 @@ fun MainScreenPreview(){
     HomeScreen(navController)
 }
 
+
+
+data class ButtonOption(val iconId: Int, val text: String, val onClick: () -> Unit)
+
+val intentKardex = Intent(Intent.ACTION_VIEW, Uri.parse("https://kardex.uaem.mx/"))
+val intentPay = Intent(Intent.ACTION_VIEW, Uri.parse("https://pagos.uaem.mx/"))
+val intentCredits = Intent(Intent.ACTION_VIEW, Uri.parse("http://seadfcaei.uaem.mx/"))
+
+
+@Composable
+fun ButtonOptions(navController: NavHostController) {
+
+    val context = LocalContext.current
+    // Lista de opciones de botones
+    val buttonOptions = listOf(
+        ButtonOption(
+            iconId = R.drawable.calendar_month,
+            text = "Ver mi Horario de Clase",
+            onClick = { navController.navigate(AppScreens.CalendarScreen.route) }
+        ),
+        ButtonOption(
+            iconId = R.drawable.edit_calendar,
+            text = "Agendar una Conferencia",
+            onClick = { navController.navigate(AppScreens.RegisterScreen.route) }
+        ),
+        ButtonOption(
+            iconId = R.drawable.contacts,
+            text = "Contacto de Profesores",
+            onClick = { navController.navigate(AppScreens.ContactsScreen.route) }
+        ),
+        ButtonOption(
+            iconId = R.drawable.link,
+            text = "Portal Kardex UAEM",
+            onClick = { context.startActivity(intentKardex) }
+        ),
+        ButtonOption(
+            iconId = R.drawable.link,
+            text = "Portal Pagos UAEM",
+            onClick = { context.startActivity(intentPay) }
+        ),
+        ButtonOption(
+            iconId = R.drawable.link,
+            text = "Portal de Créditos",
+            onClick = { context.startActivity(intentCredits) }
+        )
+    )
+    Column {
+        buttonOptions.forEach { option ->
+            Button(
+                onClick = option.onClick,
+                modifier = Modifier
+                    .padding(15.dp)
+                    .size(width = 1000.dp, height = 80.dp)
+            ) {
+                Row {
+                    Icon(
+                        painter = painterResource(id = option.iconId),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(15.dp)
+                            .size(40.dp)
+                    )
+                    Text(
+                        text = option.text,
+                        style = TextStyle(fontSize = 17.sp),
+                        modifier = Modifier.padding(17.dp)
+                    )
+                }
+            }
+        }
+    }
+}
