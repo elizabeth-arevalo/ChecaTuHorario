@@ -31,13 +31,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.blue80
-import com.google.firebase.auth.FirebaseAuth
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController){
-    val currentUser = FirebaseAuth.getInstance().currentUser
+
 
     Scaffold(
         topBar = {
@@ -75,6 +74,7 @@ fun HomeScreen(navController: NavHostController){
                 .padding(innerPadding)
                 .fillMaxWidth()) {
             ButtonOptions(navController)
+
         }
     }
 }
@@ -158,3 +158,6 @@ fun ButtonOptions(navController: NavHostController) {
         }
     }
 }
+
+
+

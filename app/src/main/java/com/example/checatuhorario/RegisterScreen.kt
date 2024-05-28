@@ -16,8 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,7 +43,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.checatuhorario.navigation.AppScreens
 import com.example.checatuhorario.ui.theme.blueL40
-import com.example.checatuhorario.utils.dataClasses.User
+import com.example.checatuhorario.utils.SemesterMenu
+import com.example.checatuhorario.utils.dataClasses.Estudiante
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
@@ -61,7 +61,7 @@ fun RegisterScreen(navController: NavHostController){
     var matricula by remember { mutableStateOf("") }
     var nombre by remember { mutableStateOf("") }
     var apellidos by remember { mutableStateOf("") }
-    val semestres=listOf("1","2","3","4","5","6","7","8")
+    var semesterMenuOpen by remember { mutableStateOf(false) }
     var semesterSelected by remember { mutableStateOf("") }
     var grupo by remember { mutableStateOf("") }
     var carrera by remember { mutableStateOf("") }
@@ -112,28 +112,20 @@ fun RegisterScreen(navController: NavHostController){
 
             Spacer(modifier = Modifier.height(16.dp))
 
-
             Box {
-                Text(
-                    text = semesterSelected.takeIf { it.isNotEmpty() } ?: "Seleccciona un Semestre",
-                    modifier = Modifier
-                        .clickable { expanded = true }
-                        .padding(15.dp)
-                )
-
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    semestres.forEach { semestre ->
-                        DropdownMenuItem(text = { TextStyle(color = Color.Black) }, onClick = {
-                            semesterSelected = semestre
-                            expanded = false
-                        })
-                        Text(text = semestre)
-                    }
+                OutlinedButton(
+                    onClick = { semesterMenuOpen = true },
+                    modifier = Modifier.padding(6.dp)) {
+                    Text(text = "Selecciona el Semestre ")
+                    Text(text = semesterSelected, color = Color.Black)
                 }
+                SemesterMenu(
+                    expanded = semesterMenuOpen,
+                    onItemClick = { semesterSelected = it },
+                    onDismiss = { semesterMenuOpen = false }
+                )
             }
+
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -182,11 +174,9 @@ fun RegisterScreen(navController: NavHostController){
 
 
                     // 2. Create a user object with the collected data
-                    val user = User(
+                    val user = Estudiante(
                         email, password, matricula, nombre, apellidos, semesterSelected, grupo, carrera
                     )
-
-
 
                     if (email.isNotEmpty() && password.isNotEmpty()){
                         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {
@@ -226,7 +216,9 @@ fun RegisterScreen(navController: NavHostController){
                 Text(text = " Ingresa",
                     color = blueL40,
                     textDecoration = TextDecoration.Underline,
-                    modifier = Modifier.clickable { navController.navigate(AppScreens.LoginScreen.route) }.padding(20.dp))
+                    modifier = Modifier
+                        .clickable { navController.navigate(AppScreens.LoginScreen.route) }
+                        .padding(20.dp))
             }
         }
     }
