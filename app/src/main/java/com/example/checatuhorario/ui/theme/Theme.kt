@@ -27,8 +27,7 @@ private val LightColorScheme = lightColorScheme(
     secondary = blueL40,
     tertiary = Cyan40,
     primaryContainer = rectoria2_24_30,
-
-
+    secondaryContainer = rectoria3_24_30
 )
 
 @Composable

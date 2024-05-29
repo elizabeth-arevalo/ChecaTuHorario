@@ -3,7 +3,6 @@ package com.example.checatuhorario
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,7 +25,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,7 +49,6 @@ fun ConferenceScreen(navController: NavHostController){
             ),
                 title = {
                     Row(modifier = Modifier
-                        .fillMaxWidth()
                         .fillMaxWidth()) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Regresar a Home",
                             Modifier.clickable {
@@ -79,13 +76,13 @@ fun ConferenceScreen(navController: NavHostController){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            NewConference()
+            NewConference(navController)
         }
     }
 }
 
 @Composable
-fun NewConference() {
+fun NewConference(navController: NavHostController) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -103,7 +100,6 @@ fun NewConference() {
             TimeSection()
 
             Spacer(modifier = Modifier.height(16.dp))
-
             ActionButtons()
         }
     }

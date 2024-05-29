@@ -36,8 +36,6 @@ import com.example.checatuhorario.ui.theme.blue80
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController){
-
-
     Scaffold(
         topBar = {
             TopAppBar(colors = topAppBarColors(
@@ -109,7 +107,7 @@ fun ButtonOptions(navController: NavHostController) {
         ButtonOption(
             iconId = R.drawable.edit_calendar,
             text = "Agendar una Conferencia",
-            onClick = { navController.navigate(AppScreens.RegisterScreen.route) }
+            onClick = { navController.navigate(AppScreens.ConferenceScreen.route) }
         ),
         ButtonOption(
             iconId = R.drawable.contacts,

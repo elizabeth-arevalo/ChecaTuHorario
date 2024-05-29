@@ -1,12 +1,11 @@
 package com.example.checatuhorario.utils
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 
 
 @Composable
@@ -32,14 +31,17 @@ fun SemesterMenu(
         onDismissRequest = onDismiss,
     ) {
         options.forEach { option ->
-            Row {
-                DropdownMenuItem(text = { option }, onClick = {
-                    var selectedOption = option
-                    onItemClick(selectedOption)
-                    onDismiss()
-                }, Modifier.fillMaxWidth())
-            }
-            Text(text = option)
+            DropdownMenuItem(
+                text = {
+                    Text(text = option,
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                       },
+                onClick = {
+                var selectedOption = option
+                onItemClick(selectedOption)
+                onDismiss()
+            })
         }
     }
 }

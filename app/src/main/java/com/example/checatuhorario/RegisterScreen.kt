@@ -54,7 +54,6 @@ import com.google.firebase.firestore.firestore
 fun RegisterScreen(navController: NavHostController){
     val db = Firebase.firestore
     val context = LocalContext.current
-    var expanded by remember { mutableStateOf(false) }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
@@ -115,8 +114,8 @@ fun RegisterScreen(navController: NavHostController){
             Box {
                 OutlinedButton(
                     onClick = { semesterMenuOpen = true },
-                    modifier = Modifier.padding(6.dp)) {
-                    Text(text = "Selecciona el Semestre ")
+                    modifier = Modifier.size(289.dp,50.dp)) {
+                    Text(text = "Selecciona el Semestre: ")
                     Text(text = semesterSelected, color = Color.Black)
                 }
                 SemesterMenu(
@@ -212,7 +211,7 @@ fun RegisterScreen(navController: NavHostController){
                 }
             }
             Row {
-                Text(text = "¿Ya tienes cuenta? ")
+                Text(text = "¿Ya tienes cuenta? ", Modifier.padding(20.dp))
                 Text(text = " Ingresa",
                     color = blueL40,
                     textDecoration = TextDecoration.Underline,
@@ -220,6 +219,7 @@ fun RegisterScreen(navController: NavHostController){
                         .clickable { navController.navigate(AppScreens.LoginScreen.route) }
                         .padding(20.dp))
             }
+            Spacer(modifier = Modifier.height(24.dp))
         }
     }
 }

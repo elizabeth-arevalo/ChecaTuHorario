@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
@@ -65,7 +66,6 @@ fun ContactListScreen(navController: NavHostController) {
             ),
                 title = {
                     Row(modifier = Modifier
-                        .fillMaxWidth()
                         .fillMaxWidth()) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Regresar",
                             Modifier.clickable {
@@ -118,19 +118,26 @@ fun ContactListScreen(navController: NavHostController) {
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Filtrar profesores
-            val filteredProfesores = profesores.filter {
-                val inRange = selectedRange?.let { range ->
-                    it.nombre.first().uppercaseChar() in range
-                } ?: true
-                val matchesSearch = it.nombre.contains(searchText.text, ignoreCase = true)
-                inRange && matchesSearch
-            }
+            LazyColumn(modifier = Modifier.padding(10.dp)) {
 
-            // Lista de profesores filtrados
-            filteredProfesores.forEach { profesor ->
-                ProfesorCardItem(profesor = profesor)
-                Spacer(modifier = Modifier.height(8.dp))
+                // Filtrar profesores
+                val filteredProfesores = profesores.filter {
+                    val inRange = selectedRange?.let { range ->
+                        it.nombre.first().uppercaseChar() in range
+                    } ?: true
+                    val matchesSearch = it.nombre.contains(searchText.text, ignoreCase = true)
+                    inRange && matchesSearch
+                }
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    // Lista de profesores filtrados
+                    filteredProfesores.forEach { profesor ->
+                        ProfesorCardItem(profesor = profesor)
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                    Spacer(modifier = Modifier.height(30.dp))
+                }
+
             }
         }
 

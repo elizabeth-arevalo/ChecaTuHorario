@@ -1,19 +1,25 @@
 package com.example.checatuhorario.utils
 
+import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material3.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,7 +30,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.checatuhorario.CalendarUiModel
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Calendar
@@ -34,20 +39,13 @@ import java.util.Calendar
 fun InfoSection(title: String, content: String) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = title,
-            style = TextStyle(
-                color = Color(0xFF666666),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Normal
-            )
+            text = title
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = content,
             style = TextStyle(
-                color = Color(0xFFBDBDBD),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium
+                color = Color(0xFF3F3E3E)
             )
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -65,24 +63,20 @@ fun DateSection() {
     }
     Column {
         Text(
-            text = "Fecha",
-            style = TextStyle(
-                color = Color(0xFF666666))
-        )
+            text = "Fecha")
         OutlinedButton(onClick = { showDialog=true },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = "Selecciona una Fecha",
-                style = TextStyle(
-                    color = Color(0xFF666666))
-            )
+                text = "Selecciona una Fecha")
         }
-        if (showDialog){
+        if (showDialog ==true){
             DatePickerDialog(
                 onDismissRequest = { showDialog = false },
                 confirmButton = {
-                    Button(onClick = { showDialog = false }) {
+                    Button(onClick = {
+                        showDialog = false
+                    }) {
                         Text(text = "Confirmar")
                     } },
                 dismissButton = {
@@ -96,8 +90,8 @@ fun DateSection() {
         }
         val date =state.selectedDateMillis
         date?.let {
-            val localDate = Instant.ofEpochMilli(it).atZone(ZoneId.of("utc")).toLocalDate()
-            Text(text = "Fecha seleccionada: ${localDate.dayOfMonth}/${localDate.month}/${localDate.year}")
+            val localDate = Instant.ofEpochMilli(it).atZone(ZoneId.of("UTC")).toLocalDate()
+            Text(text = "Fecha seleccionada: ${localDate.dayOfMonth}/${localDate.monthValue}/${localDate.year}")
         }
     }
 }
@@ -112,6 +106,7 @@ fun DateSectionPreview(){
 
 
 // Seccion para seleccionar la hora de inicio y cierre de una conferencia
+@SuppressLint("DefaultLocale")
 @Composable
 fun TimeSection() {
     val context = LocalContext.current
@@ -138,13 +133,7 @@ fun TimeSection() {
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Hora de Inicio",
-            style = TextStyle(
-                color = Color(0xFF666666),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Normal
-            )
-        )
+            text = "Hora de Inicio")
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = startTime,
@@ -154,7 +143,6 @@ fun TimeSection() {
                 .padding(8.dp)
                 .clickable { startTimePickerDialog.show() },
             style = TextStyle(
-                color = Color(0xFFBDBDBD),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium
             )
@@ -162,13 +150,7 @@ fun TimeSection() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "Hora de Finalización",
-            style = TextStyle(
-                color = Color(0xFF666666),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Normal
-            )
-        )
+            text = "Hora de Finalización")
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = endTime,
@@ -178,7 +160,6 @@ fun TimeSection() {
                 .padding(8.dp)
                 .clickable { endTimePickerDialog.show() },
             style = TextStyle(
-                color = Color(0xFFBDBDBD),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium
             )
@@ -187,17 +168,15 @@ fun TimeSection() {
 }
 
 @Composable
-fun ActionButtons() {
+fun ActionButtons(
+
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
         Button(
             onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF003466),
-                contentColor = Color.White
-            ),
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "GUARDAR")
@@ -207,10 +186,6 @@ fun ActionButtons() {
 
         OutlinedButton(
             onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF88889D),
-                contentColor = Color.White
-            ),
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "CANCELAR")

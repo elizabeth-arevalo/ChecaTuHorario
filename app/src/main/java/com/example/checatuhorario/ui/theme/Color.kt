@@ -13,9 +13,9 @@ val rectoria3_24_30 = Color(0xFF86B8EC)
 val rectoria4_24_30 = Color(0xFF93D8F7)
 
 
-val white80 = Color(0xFFEEEEEE)
+val white80 = Color(0xFFA3EDF7)
 val blue80 = Color(0xFFD1E7FC)
 val blueL80 = Color(0xFF63AFFD)
 val Cyan80 = Color(0xFFB4F7FF)
 
-val blueL100 = Color(0xFFCAF0F7)
+val blueL100 = Color(0xFFB1F3FF)
