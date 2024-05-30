@@ -269,7 +269,7 @@ fun ListCards(){
         Materia("Realidad Aumentada", "16:35","17:25", labIn4, edificio,"Mtra. Beatriz Serrano Rodríguez"),
         Materia("Sistemas Inteligentes", "17:30","18:15", lab3, edificio,"Ing. Ariana María García Reyes"),
         Materia("Internet de las Cosas", "18:20","19:15", labIn4, edificio,"Dr. David Torres Moreno"),
-        Materia("Seminario de Investigación", "19:20","20:15", salon, edificio,"Dra- Laura Cruz Abarca")
+        Materia("Seminario de Investigación", "19:20","20:15", salon, edificio,"Dra. Laura Cruz Abarca")
     )
         LazyColumn(modifier = Modifier
             .fillMaxWidth()

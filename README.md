@@ -25,8 +25,27 @@ En los siguientes enlaces se puede encontrar la documentación oficial de las te
 
 A continuación, se muestran capturas de pantalla de la aplicación y todas sus Screens:
 
-![](https://github.com/elizabeth-arevalo/ChecaTuHorario/tree/master/img/Screenshot_SplashScreen)
-
+- SplashScreen:
+  - ![](img/Screenshot_SplashScreen.png)
+- WelcomeScreen:
+  - ![](img/Screenshot_WelcomeScreen.png)
+- RegisterScreen:
+  - ![](img/Screenshot_Auth1.png)
+  - ![](img/Screenshot_Auth2.png)
+- LoginScreen:
+  - ![](img/Screenshot_LoginScreen.png)
+- ForgetPasswordScreen:
+  - ![](img/Screenshot_ForgetScreen1.png)
+  - ![](img/Screenshot_ForgetScreen2.png)
+  - ![](img/Screenshot_ForgetScreen3.png)
+- HomeScreen:
+  - ![](img/Screenshot_HomeScreen.png)
+- CalendarScreen:
+  - ![](img/Screenshot_CalendarScreen.png)
+- AddConferenceScreen:
+  - ![](img/Screenshot_AddConferenceScreen.png)
+- ContactsScreen:
+  - ![](img/Screenshot_ContactsScreen.png)
 
 ## Créditos.
 
