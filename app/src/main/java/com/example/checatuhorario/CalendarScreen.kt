@@ -153,7 +153,7 @@ fun Header(
                 // show "Today" if user selects today's date
                 // else, show the full format of the date
                 text = if (data.selectedDate.isToday) {
-                    "Today: ${data.selectedDate.date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))}"
+                    data.selectedDate.date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
                 } else {
                     data.selectedDate.date.format(
                         DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)

@@ -1,22 +1,44 @@
-# INTRODUCCION
+# Introducción
 
-EL DESARROLLO DE APLICACIONES MÓVILES PARA TELÉFONOS CELULARES HA
-REDEFINIDO NUESTRA VIDA COTIDIANA DE MANERAS QUE ANTES PARECÍAN
-FUTURISTAS.DESDELA APARICIÓN DE LAS PRIMERAS APLICACIONES SENCILLAS
-HASTA EL AUGE DE LAS SOFISTICADAS Y VERSÁTILES APPS QUE UTILIZAMOS A
-DIARIO, ESTAS HERRAMIENTAS SE HAN CONVERTIDO EN PILARES
-FUNDAMENTALES DE NUESTRO DÍA A DÍA. EN ESTA BREVE INTRODUCCIÓN,
-EXPLORAREMOS EL IMPACTO TRANSFORMADOR QUE EL DESARROLLO DE
-APLICACIONESMÓVILESHA TENIDOENNUESTRA COTIDIANIDAD, CAMBIANDOLA
-FORMA EN QUE TRABAJAMOS, NOS DIVERTIMOS, NOS ORGANIZAMOS Y NOS
-CONECTAMOS CON EL MUNDO QUE NOS RODEA
+Presentamos este proyecto con el objetivo de abordar una problemática recurrente que afecta tanto al inicio de cada semestre como a lo largo de este.
 
-# IDENTIFICACIÓN DEL PROBLEMA
+## Requisitos
+Este proyecto fue desarrollado en [JetPack Compose](https://developer.android.com/develop/ui/compose?hl=es-419).
 
-Presentamos este proyecto con el objetivo de abordar una problemática recurrente que afecta tanto al inicio de cada semestre como a lo largo de este. En numerosas ocasiones, los estudiantes desconocen el horario de inicio de sus clases, y a veces solo lo descubren el mismo día que comienzan. La administración de la Facultad coloca hojas impresas en las entradas principales del edificio, pero con frecuencia estas hojas no contienen los horarios de clases, sino más bien listas de estudiantes admitidos o anuncios generales que no proporcionan información sobre los horarios de las clases.
+### Requisitos previos
 
-Además, los horarios suelen estar dispersos por todo el edificio o en su caso, en el edificio 2b (Blanco), lo que dificulta encontrarlos, y cuando finalmente se encuentra uno, es complicado determinar si corresponde a la carrera del estudiante o a otra, lo que puede llevar a la confusión. También hemos identificado que, incluso si se encuentran los horarios correctos, a menudo no están completos ni incluyen información sobre todas las carreras
+Para el montaje de esta App, se necesita contar con el siguiente software y servicio:
 
-# Objetivo general
+- Android Studio
+- Conexión con [Firebase](https://firebase.google.com/?hl=es-419)
 
-Desarrollar una aplicación móvil para mostrar información precisa y util al estudiantado de nuevo ingreso como los existentes en al Facultad de Contaduría, Administración e Informática (FCAeI- UAEM), que permita consultar datos de interés para los estudiantes, como: horarios de clases. Además, se busca reducir la dependencia de impresión de horarios en papel, lo que contribuirá a la protección del medio ambiente.
+### Material de referencia.
+
+En los siguientes enlaces se puede encontrar la documentación oficial de las tecnologías utilizadas para el desarrollo del proyecto:
+- [Firebase](https://firebase.google.com/docs/projects/learn-more?hl=es-419)
+- [Firebase Authentication](https://firebase.google.com/docs/auth?hl=es_419).
+- [Cloud Store](https://firebase.google.com/docs/storage?hl=es_419)
+- [Documentación oficial de JetPack Compose](https://developer.android.com/develop/ui/compose/tutorial?hl=es-419)
+- [Curso de Jetpack Compose](https://www.youtube.com/watch?v=0UjtLmAO1SA&list=PL8ie04dqq7_ORKWIwiaSTcyBKtasZtNUD)
+
+## Capturas de pantalla de la aplicación.
+
+A continuación, se muestran capturas de pantalla de la aplicación y todas sus Screens:
+
+![](https://github.com/elizabeth-arevalo/ChecaTuHorario/tree/master/img/Screenshot_SplashScreen)
+
+
+## Créditos.
+
+Este proyecto fue desarrollado por:
+
+- Elizabeth Paulina Arévalo Sandoval.
+    - [GitHub](https://github.com/elizabeth-arevalo)
+    - [Facebook](https://www.facebook.com/Izel.Are/)
+    - [LinkedIn](https://www.linkedin.com/in/elizabeth-paulina-ar%C3%A9valo-sandoval-2875b0228/)
+- Marco Antonio Hernández Magni.
+    - [GitHub](https://github.com/Magni007)
+- Jesús Javier Flores Pérez.
+    - [GitHub](https://github.com/jjavierohara)
+    - [Facebook](https://www.linkedin.com/in/elizabeth-paulina-ar%C3%A9valo-sandoval-2875b0228/)
+    - [Instagram](https://www.instagram.com/soyjavier_99/)

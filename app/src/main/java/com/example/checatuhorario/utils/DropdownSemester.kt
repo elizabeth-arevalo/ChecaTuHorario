@@ -38,12 +38,11 @@ fun SemesterMenu(
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                        },
                 onClick = {
-                var selectedOption = option
+                val selectedOption = option
                 onItemClick(selectedOption)
                 onDismiss()
             })
         }
     }
 }
-
 
