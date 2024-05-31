@@ -21,14 +21,16 @@ En los siguientes enlaces se puede encontrar la documentación oficial de las te
 - [Documentación oficial de JetPack Compose](https://developer.android.com/develop/ui/compose/tutorial?hl=es-419)
 - [Curso de Jetpack Compose](https://www.youtube.com/watch?v=0UjtLmAO1SA&list=PL8ie04dqq7_ORKWIwiaSTcyBKtasZtNUD)
 
-## Capturas de pantalla de la aplicación.
+## Funcionamiento de la aplicación.
 
-A continuación, se muestran capturas de pantalla de la aplicación y todas sus Screens:
+A continuación, se muestran una breve muestra del funcionamiento de la aplicación y todas sus Screens:
 
-- Primeras Pantallas:
-  - ![](img/ChecaTuHorario1.webm)
-- App al hacer Login:
-  - ![](img/ChecaTuHorario2.webm)
+
+![](img/ChecaTuHorario1.gif)
+
+![](img/ChecaTuHorario2.gif)
+
+
 
 ## Créditos.
 
@@ -36,11 +38,10 @@ Este proyecto fue desarrollado por:
 
 - Elizabeth Paulina Arévalo Sandoval.
     - [GitHub](https://github.com/elizabeth-arevalo)
-    - [Facebook](https://www.facebook.com/Izel.Are/)
     - [LinkedIn](https://www.linkedin.com/in/elizabeth-paulina-ar%C3%A9valo-sandoval-2875b0228/)
 - Marco Antonio Hernández Magni.
     - [GitHub](https://github.com/Magni007)
+    - [LinkedIn](https://www.linkedin.com/in/marco-hern%C3%A1ndez-aba4a0310/)
 - Jesús Javier Flores Pérez.
     - [GitHub](https://github.com/jjavierohara)
-    - [Facebook](https://www.linkedin.com/in/elizabeth-paulina-ar%C3%A9valo-sandoval-2875b0228/)
-    - [Instagram](https://www.instagram.com/soyjavier_99/)
+    - [LinkedIn](www.linkedin.com/in/j-javier-flores-p-1a1016293)
