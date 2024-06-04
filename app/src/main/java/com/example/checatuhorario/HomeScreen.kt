@@ -48,7 +48,7 @@ fun HomeScreen(navController: NavHostController){
                             """
                 Alumno: Hernández Magni Marco Antonio 
                 Matrícula: 10044529 
-                Carrera: Licenciatura en Informática 7”U
+                Carrera: Licenciatura en Informática 8”U
                             """.trimIndent(),
                             style = TextStyle(
                                 fontSize = 15.sp,
@@ -148,7 +148,7 @@ fun ButtonOptions(navController: NavHostController) {
                     )
                     Text(
                         text = option.text,
-                        style = TextStyle(fontSize = 17.sp),
+                        style = TextStyle(fontSize = 15.sp),
                         modifier = Modifier.padding(17.dp)
                     )
                 }

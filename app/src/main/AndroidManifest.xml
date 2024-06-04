@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/fcaei"
+        android:icon="@drawable/uniconcep"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/fcaei"
+        android:roundIcon="@drawable/uniconcep"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChecaTuHorario"
         tools:targetApi="31">
