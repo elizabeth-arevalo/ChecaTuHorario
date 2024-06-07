@@ -169,12 +169,13 @@ fun RegisterScreen(navController: NavHostController){
             Button(
                 modifier = Modifier.padding(6.dp),
                 onClick = {
-                    // 1. Create a data class to represent the user
 
-
-                    // 2. Create a user object with the collected data
+                    // Create a user object with the collected data
                     val user = Estudiante(
-                        email, password, matricula, nombre, apellidos, semesterSelected, grupo, carrera
+                        nombre = nombre, apellidos = apellidos,
+                        matricula = matricula, carrera = carrera,
+                        grupo = grupo, semesterSelected = semesterSelected,
+                        email = email, password = password
                     )
 
                     if (email.isNotEmpty() && password.isNotEmpty()){
